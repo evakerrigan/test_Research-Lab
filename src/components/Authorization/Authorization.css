@@ -1,0 +1,54 @@
+.authorization {
+  padding: 165px 0 0 0;
+}
+.authorization-form {
+  padding: 26px 0 0 0;
+}
+.authorization-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.authorization-input {
+  display: block;
+  width: 272px;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0em;
+  border: 1px solid #414549;
+  border-radius: 4px;
+  margin: 0px 0 15px 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.authorization-question {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.authorization-submit {
+  padding: 13px 55px;
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(2, 152, 169, 1);
+  border: none;
+  border-radius: 4px;
+  margin: 25px 0 0 0;
+  cursor: pointer;
+}
+.authorization-submit:hover {
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.6);
+}
+.input-wrapper {
+  padding: 15px 0 0 0;
+}
+.authorization-label {
+  padding: 0 0 0 10px;
+  font-size: 12px;
+  line-height: 16px;
+}
