@@ -2,6 +2,25 @@ import './Authorization.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthState, authSlice, selectorAuth } from '../../store/auth';
 import { FormEvent } from 'react';
+import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+interface Values {
+  email: string;
+  password: string;
+}
+
+const SignupSchema = Yup.object().shape({
+  email: Yup.string()
+    .min(3, 'Too Short! Minimum 3')
+    .max(70, 'Too Long! Maximum 70')
+    .email('Invalid email')
+    .required('Required'),
+  password: Yup.string()
+    .min(3, 'Too Short! Minimum 3')
+    .max(70, 'Too Long! Maximum 70')
+    .required('Required'),
+});
 
 export const Authorization = () => {
 
@@ -9,16 +28,12 @@ export const Authorization = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
     dispatch(authSlice.actions.setAuth(true));
-
   };
 
   const handleClick = (e: FormEvent) => {
     e.preventDefault();
-
     dispatch(authSlice.actions.setAuth(false));
-
   };
 
   const isAuth = useSelector<AuthState>(selectorAuth);
@@ -27,20 +42,65 @@ export const Authorization = () => {
     <div className="authorization">
       {!isAuth ? (
         <div>
-          <div className="authorization-title">Sign In</div>
+
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+            }}
+            validationSchema={SignupSchema}
+            onSubmit={(
+              values: Values,
+              { setSubmitting }: FormikHelpers<Values>
+            ) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 500);
+            }}
+          >
+
+            <Form>
+              <div className="authorization-title">Sign In</div>
+              <Field
+                id="email"
+                name="email"
+                placeholder="Email*"
+                type="email"
+                className="authorization-input"
+              />
+              <ErrorMessage
+                component="div"
+                name="email"
+                className="invalid-feedback"
+              />
+              <Field
+                id="password"
+                name="password"
+                placeholder="Password*"
+                className="authorization-input"
+              />
+              <ErrorMessage
+                component="div"
+                name="password"
+                className="invalid-feedback"
+              />
+              <div className="authorization-question">Forgot password?</div>
+
+              <button type="submit" className="authorization-submit">Sign In</button>
+
+              <div className="input-wrapper">
+                <input type="checkbox" id="2" className="authorization-agree" />
+                <label htmlFor="remember" className="authorization-label">Remember password</label>
+              </div>
+            </Form>
+
+          </Formik>
+
 
           <form onSubmit={e => handleSubmit(e)} className="authorization-form">
 
-            <input type="text" className="authorization-input" placeholder="Email*" />
-            <input type="text" className="authorization-input" placeholder="Password*" />
-            <div className="authorization-question">Forgot password?</div>
-
-            <button className="authorization-submit" type="submit">Sign In</button>
-
-            <div className="input-wrapper">
-              <input type="checkbox" id="2" className="authorization-agree" />
-              <label htmlFor="remember" className="authorization-label">Remember password</label>
-            </div>
+            <button className="authorization-submit" type="submit">Sign In - Redux</button>
 
           </form>
 

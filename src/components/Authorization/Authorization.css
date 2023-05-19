@@ -1,15 +1,16 @@
 .authorization {
   padding: 165px 0 0 0;
 }
-.authorization-form {
+/* .authorization-form {
   padding: 26px 0 0 0;
-}
+} */
 .authorization-title {
   font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.1px;
+  padding: 0 0 26px 0;
 }
 .authorization-input {
   display: block;
@@ -51,4 +52,13 @@
   padding: 0 0 0 10px;
   font-size: 12px;
   line-height: 16px;
+}
+
+.invalid-feedback {
+  display: block;
+  width: 272px;
+  color: #fff;
+  background-color: red;
+  padding: 10px;
+  margin: 0 0 10px 0;
 }
