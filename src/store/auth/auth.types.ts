@@ -1,5 +1,5 @@
 export interface AuthState {
-  auth: {
+  isAuth : {
     value: boolean;
   };
 }

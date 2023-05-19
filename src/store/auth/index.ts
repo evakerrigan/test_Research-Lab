@@ -1,3 +1,3 @@
 export type { AuthState } from './auth.types';
-// export { selectorAuthInput } from './auth.selectors';
-// export { authSlice } from './auth.slice';
+export { selectorAuth } from './auth.selector';
+export { authSlice } from './auth.slice';
