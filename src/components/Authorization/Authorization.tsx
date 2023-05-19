@@ -26,10 +26,9 @@ export const Authorization = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const validateSubmit = () => {
     dispatch(authSlice.actions.setAuth(true));
-  };
+  }
 
   const handleClick = (e: FormEvent) => {
     e.preventDefault();
@@ -53,10 +52,8 @@ export const Authorization = () => {
               values: Values,
               { setSubmitting }: FormikHelpers<Values>
             ) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 500);
+              validateSubmit();
+              setSubmitting(false);
             }}
           >
 
@@ -96,13 +93,6 @@ export const Authorization = () => {
             </Form>
 
           </Formik>
-
-
-          <form onSubmit={e => handleSubmit(e)} className="authorization-form">
-
-            <button className="authorization-submit" type="submit">Sign In - Redux</button>
-
-          </form>
 
         </div>
       ) :
