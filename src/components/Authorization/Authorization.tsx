@@ -3,8 +3,10 @@ import { AuthState, authSlice, selectorAuth } from '../../store/auth';
 import { FormEvent } from 'react';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, Checkbox, FormControlLabel, Typography } from '@mui/material';
+import { Avatar, Box, Button, Checkbox, FormControlLabel, Link, Typography } from '@mui/material';
 import { TextField } from 'formik-mui';
+import AvatarImage from '../../assets/image/avatar.png';
+import ArrowIcon from '../../assets/icon/icon.svg';
 
 interface Values {
   email: string;
@@ -108,22 +110,15 @@ export const Authorization = () => {
               </Button>
               <Box sx={{
                 paddingTop: '15px',
-                fontSize: 5,
               }}>
                 <FormControlLabel
                   control={
                     <Checkbox
                       name="checkedB"
                       color="primary"
-                      sx={{
-                        fontSize: 5,
-                      }}
                     />
                   }
                   label="Remember password"
-                  sx={{
-                    fontSize: 5,
-                  }}
                 />
               </Box>
             </Form>
@@ -131,10 +126,65 @@ export const Authorization = () => {
           </Formik>
 
         </Box>
-      ) :
 
-        <button onClick={e => handleClick(e)} className="authorization-submit" type="submit">Sign Out</button>
+      ) : (
 
+        <Box >
+
+          <Box
+            pt={14.5}
+            pl={3}
+            sx={{
+              display: 'flex',
+            }}>
+            <Avatar variant="square" src={AvatarImage} sx={{
+              width: '50px',
+              height: '50px',
+            }} />
+            <Link href="#" color="#fff" underline="none" pl={3} sx={{}}>
+              <Typography
+                color='primary.main'
+                fontSize={24}
+                fontWeight={500}
+                fontFamily={'Roboto, sans-serif'}
+                sx={{
+
+                }}
+              >
+                User/1
+              </Typography>
+            </Link>
+          </Box>
+
+          <Box sx={{
+            position: 'relative',
+            marginLeft: '90px',
+            marginTop: '3px',
+          }}>
+            <Avatar variant="square" src={ArrowIcon} sx={{
+              position: 'absolute',
+              top: '13px',
+              left: '5px',
+              width: '12px',
+              height: '12px',
+            }} />
+            <Button
+              onClick={e => handleClick(e)}
+              type="submit"
+              sx={{
+                textTransform: 'capitalize',
+                fontSize: '14px',
+                fontWeight: '300',
+                paddingLeft: '23px',
+              }}
+            >
+              Logout
+            </Button>
+
+          </Box>
+
+        </Box>
+      )
       }
     </Box>
   );

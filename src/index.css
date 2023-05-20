@@ -1,5 +1,7 @@
-:root {
-  font-family: 'Open Sans', sans-serif;
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 body {
@@ -8,7 +10,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #E7E2DE;
   background-color: #000;
   color: #000;
 }

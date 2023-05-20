@@ -1,5 +1,4 @@
 import { Container, Grid, Typography } from '@mui/material';
-import './App.css'
 import { Authorization } from './components/Authorization/Authorization';
 import { NavBar } from './components/NavBar/NavBar';
 import BackgroundImage from './assets/image/background.png';
@@ -15,11 +14,11 @@ function App() {
         backgroundImage: `url(${BackgroundImage})`,
       }}
     >
-      <Grid container spacing={0}>
-        <Grid item xs={6} lg={6}>
+      <Grid container spacing={0} sx={{width: '1440px'}}>
+        <Grid item xs={6} lg={6} sx={{width: '720px'}}>
           <NavBar />
         </Grid>
-        <Grid item xs={6} lg={6} pt={8} pl={24.5}>
+        <Grid item xs={6} lg={6} pt={8} pl={24.5}  sx={{width: '720px'}}>
           <Typography
             component="div"
             fontSize={24}
