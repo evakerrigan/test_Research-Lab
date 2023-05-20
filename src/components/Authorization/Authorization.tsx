@@ -1,10 +1,10 @@
-import './Authorization.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthState, authSlice, selectorAuth } from '../../store/auth';
 import { FormEvent } from 'react';
-import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
+import { Formik, Field, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Checkbox, FormControlLabel, Typography } from '@mui/material';
+import { TextField } from 'formik-mui';
 
 interface Values {
   email: string;
@@ -58,32 +58,36 @@ export const Authorization = () => {
           >
 
             <Form>
-              <Typography component="div" fontSize={24} fontWeight={500} pb={2.5}>Sign In</Typography>
-              <Box ></Box>
-              <Field
-                id="email"
-                name="email"
-                placeholder="Email*"
-                type="email"
-                className="authorization-input"
-              />
-              <ErrorMessage
-                component="div"
-                name="email"
-                className="invalid-feedback"
-              />
-              <Field
-                id="password"
-                name="password"
-                placeholder="Password*"
-                className="authorization-input"
-              />
-              <ErrorMessage
-                component="div"
-                name="password"
-                className="invalid-feedback"
-              />
-              <Typography component="div" fontSize={12} className="authorization-question">Forgot password?</Typography>
+              <Typography component="div" fontSize={24} fontWeight={500} fontFamily={'Roboto, sans-serif'} pb={2.5}>Sign In</Typography>
+              <Box mb={1} >
+                <Field
+                  component={TextField}
+                  id="email"
+                  name="email"
+                  placeholder="Email*"
+                  type="email"
+                  sx={{
+                    width: '298px',
+                    border: '1px solid #414549',
+                    borderRadius: '4px',
+                  }}
+                />
+              </Box>
+              <Box >
+                <Field
+                  component={TextField}
+                  id="password"
+                  name="password"
+                  placeholder="Password*"
+                  sx={{
+                    width: '298px',
+                    border: '1px solid #414549',
+                    borderRadius: '4px',
+                    color: '#000',
+                  }}
+                />
+              </Box>
+              <Typography component="div" fontSize={12} pt={1} >Forgot password?</Typography>
 
               <Button
                 type="submit"
@@ -102,11 +106,26 @@ export const Authorization = () => {
               >
                 Sign In
               </Button>
-
-              <div className="input-wrapper">
-                <input type="checkbox" id="2" className="authorization-agree" />
-                <label htmlFor="remember" className="authorization-label">Remember password</label>
-              </div>
+              <Box sx={{
+                paddingTop: '15px',
+                fontSize: 5,
+              }}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="checkedB"
+                      color="primary"
+                      sx={{
+                        fontSize: 5,
+                      }}
+                    />
+                  }
+                  label="Remember password"
+                  sx={{
+                    fontSize: 5,
+                  }}
+                />
+              </Box>
             </Form>
 
           </Formik>
