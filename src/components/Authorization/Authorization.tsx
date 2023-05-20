@@ -4,6 +4,7 @@ import { AuthState, authSlice, selectorAuth } from '../../store/auth';
 import { FormEvent } from 'react';
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 interface Values {
   email: string;
@@ -38,10 +39,9 @@ export const Authorization = () => {
   const isAuth = useSelector<AuthState>(selectorAuth);
 
   return (
-    <div className="authorization">
+    <Box pt={19.5}>
       {!isAuth ? (
-        <div>
-
+        <Box >
           <Formik
             initialValues={{
               email: '',
@@ -58,7 +58,8 @@ export const Authorization = () => {
           >
 
             <Form>
-              <div className="authorization-title">Sign In</div>
+              <Typography component="div" fontSize={24} fontWeight={500} pb={2.5}>Sign In</Typography>
+              <Box ></Box>
               <Field
                 id="email"
                 name="email"
@@ -82,9 +83,25 @@ export const Authorization = () => {
                 name="password"
                 className="invalid-feedback"
               />
-              <div className="authorization-question">Forgot password?</div>
+              <Typography component="div" fontSize={12} className="authorization-question">Forgot password?</Typography>
 
-              <button type="submit" className="authorization-submit">Sign In</button>
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{
+                  padding: '10px 55px',
+                  fontSize: '16px',
+                  borderRadius: '4px',
+                  marginTop: '22px',
+                  textTransform: 'capitalize',
+                  '&:hover': {
+                    backgroundColor: 'primary.main',
+                    boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.6)',
+                  }
+                }}
+              >
+                Sign In
+              </Button>
 
               <div className="input-wrapper">
                 <input type="checkbox" id="2" className="authorization-agree" />
@@ -94,12 +111,12 @@ export const Authorization = () => {
 
           </Formik>
 
-        </div>
+        </Box>
       ) :
 
         <button onClick={e => handleClick(e)} className="authorization-submit" type="submit">Sign Out</button>
 
       }
-    </div>
+    </Box>
   );
 }
