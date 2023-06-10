@@ -1,7 +1,6 @@
 import { Container, Grid, Typography } from '@mui/material';
 import { Authorization } from './components/Authorization/Authorization';
 import { NavBar } from './components/NavBar/NavBar';
-import BackgroundImage from './assets/image/background.png';
 
 function App() {
 
@@ -10,8 +9,6 @@ function App() {
       sx={{
         width: 1440,
         height: 800,
-        backgroundColor: '#E7E2DE',
-        backgroundImage: `url(${BackgroundImage})`,
       }}
     >
       <Grid container spacing={0} sx={{width: '1440px'}}>

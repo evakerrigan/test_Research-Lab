@@ -10,7 +10,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #000;
+  background-color: #E7E2DE;
   color: #000;
+  background-image: url('./assets/image/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
